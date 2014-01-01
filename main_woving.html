@@ -1,0 +1,33 @@
+<!doctype>
+
+<html>
+
+<head>
+
+<title>{{head_title}}</title>
+
+<body>
+
+<small>Woving , powered by Tornado and developed by velphin.com</small>
+
+
+
+<ul>
+{% for story in stories %}
+<li> <a href="{{escape(story[0])}}">{{escape(story[1])}} </a></li>
+{% end %}
+</ul>
+
+
+
+<form method="post">
+
+
+	<input type="text" name="user_news" value=""/>
+
+	<input type="submit"/>
+
+
+
+</body>
+</head>
