@@ -6,7 +6,7 @@ import tornado.web
 
 
 from tornado.options import define, options, parse_command_line
-
+from tornado.web import RequestHandler
 
 
 
@@ -17,12 +17,20 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
 
     	
+    	stories=[["test1","test.com"],["http://www.velphin.com/","velphin"]]   
+    	self.render("main_woving.html", head_title="Woving", stories=stories)
 
-    	stories=[["test1","test.com"],["http://www.velphin.com/","velphin"]]
 
-    
 
-    	self.render("main_woving.html", head_title="Woving", stories=stories,)
+
+    def post(self):
+
+        user_info=self.get_argument("user_news")
+        if user_info:
+            self.write("You wrote "+user_info)
+            
+        
+
 
 
 class NewsHandler(tornado.web.RequestHandler):
@@ -32,14 +40,9 @@ class NewsHandler(tornado.web.RequestHandler):
 
 
 
-
-
-
-#class PostNews(tornado.web.RequestHandler):
-
-
-
-
+"""
+TO DO : Feeds and update 
+"""
 
 
 def main():
@@ -47,6 +50,7 @@ def main():
     	[
             (r"/", MainHandler),
             (r"/story/([0-100]+)",NewsHandler)
+
             ],
 
             )
