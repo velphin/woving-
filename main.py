@@ -41,7 +41,8 @@ class NewsHandler(tornado.web.RequestHandler):
 
 
 """
-TO DO : Feeds and update 
+-TO DO : Feeds and update 
+-      : Implement WGSI
 """
 
 
